@@ -1,0 +1,31 @@
+version: '3'
+
+services: 
+    caddy: 
+        image: caddy:latest
+        ports: 
+            - 80:80
+        volumes: 
+            - $PWD/Caddyfile:/etc/caddy/Caddyfile
+            - $PWD/:/srv
+            - caddy_data:/data
+            - caddy_config:/config
+        networks: 
+            - x-network
+        restart: unless-stopped
+    
+    xray:
+        image: teddysun/xray
+        ports:
+            - 443:443
+        volumes:
+            - caddy_data:/data
+            - .:/etc/xray
+        networks:
+            - x-network
+
+networks: 
+    x-network:
+volumes:
+    caddy_data:
+    caddy_config:
