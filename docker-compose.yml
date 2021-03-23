@@ -10,6 +10,7 @@ services:
             - $PWD/:/srv
             - caddy_data:/data
             - caddy_config:/config
+            - ./resolv.conf:/etc/resolv.conf
         networks: 
             - x-network
         restart: unless-stopped
@@ -23,6 +24,7 @@ services:
             - .:/etc/xray
         networks:
             - x-network
+        restart: always
 
 networks: 
     x-network:

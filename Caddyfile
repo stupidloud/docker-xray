@@ -8,12 +8,12 @@ allow_h2c
 }
 }
 http://{host}:80 {
-reverse_proxy https://www.google.com
+respond "Hello, world!"
 }
 
 http://{host}:8080 {
-reverse_proxy https://www.googl.com
+respond "Hello, world!"
 }
 {host} {
-reverse_proxy https://www.google.com
+respond "Hello, world!"
 }
