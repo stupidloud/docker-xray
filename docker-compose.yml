@@ -22,8 +22,10 @@ services:
         volumes:
             - caddy_data:/data
             - .:/etc/xray
+            - ./hosts:/etc/hosts
         networks:
             - x-network
+        restart: always
 
 networks: 
     x-network:
