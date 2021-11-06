@@ -18,7 +18,8 @@ services:
     xray:
         image: teddysun/xray
         ports:
-            - 443:443
+            - 443:443/tcp
+            - 443:443/udp
         volumes:
             - caddy_data:/data
             - .:/etc/xray
