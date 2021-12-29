@@ -1,6 +1,12 @@
 version: '3'
 
 services: 
+    php:
+        container_name: php
+        image: php:8-fpm
+        volumes:
+            - $PWD/www:/srv
+
     caddy: 
         image: caddy:latest
         ports: 
@@ -10,9 +16,9 @@ services:
             - $PWD/www:/srv
             - caddy_data:/data
             - ./resolv.conf:/etc/resolv.conf
-        networks: 
-            - x-network
         restart: unless-stopped
+        depends_on:
+            - php
     
     xray:
         image: teddysun/xray
@@ -23,11 +29,9 @@ services:
             - caddy_data:/data
             - .:/etc/xray
             - ./hosts:/etc/hosts
-        networks:
-            - x-network
         restart: always
+        depends_on:
+            - caddy
 
-networks: 
-    x-network:
 volumes:
     caddy_data:
