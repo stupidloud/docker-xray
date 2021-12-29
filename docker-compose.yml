@@ -7,7 +7,7 @@ services:
             - 80:80
         volumes: 
             - $PWD/Caddyfile:/etc/caddy/Caddyfile
-            - $PWD/:/srv
+            - $PWD/www:/srv
             - caddy_data:/data
             - ./resolv.conf:/etc/resolv.conf
         networks: 
