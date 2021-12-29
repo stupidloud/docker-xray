@@ -9,7 +9,6 @@ services:
             - $PWD/Caddyfile:/etc/caddy/Caddyfile
             - $PWD/:/srv
             - caddy_data:/data
-            - caddy_config:/config
             - ./resolv.conf:/etc/resolv.conf
         networks: 
             - x-network
@@ -18,7 +17,8 @@ services:
     xray:
         image: teddysun/xray
         ports:
-            - 443:443
+            - 443:443/tcp
+            - 443:443/udp
         volumes:
             - caddy_data:/data
             - .:/etc/xray
@@ -31,4 +31,3 @@ networks:
     x-network:
 volumes:
     caddy_data:
-    caddy_config:
