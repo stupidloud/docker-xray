@@ -1,5 +1,12 @@
 # docker-xray
 
+Archived repository.
+
+This project is kept as a historical snapshot and is no longer maintained. The
+container tags, Xray protocol settings, and deployment approach in this repo
+may no longer match current upstream best practices or current client/server
+compatibility requirements.
+
 Minimal Docker-based Xray setup with:
 
 - `xray` for VLESS over XTLS
